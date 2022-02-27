@@ -19,6 +19,8 @@ const changeInput = (event) => {
     if (inputValue === "") {
         return    
     };
+
+    inputValue = inputValue.trim();
     
     fetchCountries(inputValue);
 };
