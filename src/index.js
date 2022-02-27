@@ -1,7 +1,7 @@
 import './css/styles.css';
 import debounce from 'lodash.debounce';
 import { fetchCountries, listEl, infoEl } from './function__js/fetchCountries';
-//import trim from 'lodash';
+import trim from 'lodash';
 
 const DEBOUNCE_DELAY = 300;
 let inputValue = null;
@@ -16,6 +16,10 @@ const changeInput = (event) => {
     infoEl.innerHTML = "";
     inputValue = event.target.value;
 
+    if (inputValue === "") {
+        return
+    };
+    
     fetchCountries(inputValue);
 };
 
