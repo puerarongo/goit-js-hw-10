@@ -22,16 +22,13 @@ const changeInput = (event) => {
     };
 
     funcForPromise(inputValue); 
+
 };
 
 
 const funcForPromise = (name) => {
     fetchCountries(name)
-        .then(country => {
-        if (country.status === 404) {
-                return error;
-            }
-            
+        .then(country => {   
         if (country.length > 10) {
             Notify.info("Too many matches found. Please enter a more specific name!");
             }
@@ -42,7 +39,7 @@ const funcForPromise = (name) => {
             countryInfo(country);
             }
         })  // country[0] - доступ к объекту
-        .catch(error => Notify.failure("Oops, there is no country with that name!"));
+        .catch(Notify.failure("Oops, there is no country with that name!"));
 };
 
 
@@ -63,6 +60,10 @@ const countryInfo = (countryName) => {
     <li><p>Languages: ${elem.languages.map((minEl) => minEl.name).join(", ")}</p></li></ul>`);
 
     infoEl.insertAdjacentHTML("beforeend", infoCountryName);
+};
+
+const errorHandler = () => {
+    Notify.failure("Oops, there is no country with that name!");
 };
 
 inputEl.addEventListener("input", debounce(changeInput, DEBOUNCE_DELAY));
