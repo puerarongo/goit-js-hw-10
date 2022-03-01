@@ -6,5 +6,4 @@ export const fetchCountries = (name) => {
             }
             throw new Error();
         })
-        .catch(error => console.log(error))
 };

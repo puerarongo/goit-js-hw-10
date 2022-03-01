@@ -39,7 +39,7 @@ const funcForPromise = (name) => {
             countryInfo(country);
             }
         })  // country[0] - доступ к объекту
-        .catch(Notify.failure("Oops, there is no country with that name!"));
+        .catch(error => Notify.failure("Oops, there is no country with that name!"));
 };
 
 
@@ -62,8 +62,5 @@ const countryInfo = (countryName) => {
     infoEl.insertAdjacentHTML("beforeend", infoCountryName);
 };
 
-const errorHandler = () => {
-    Notify.failure("Oops, there is no country with that name!");
-};
 
 inputEl.addEventListener("input", debounce(changeInput, DEBOUNCE_DELAY));
